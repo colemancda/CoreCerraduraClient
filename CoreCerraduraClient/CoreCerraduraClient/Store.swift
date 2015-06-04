@@ -34,7 +34,7 @@ final public class Store: NetworkObjects.Store {
     
     // MARK: - Initialization
     
-    init(managedObjectContextConcurrencyType: NSManagedObjectContextConcurrencyType, serverURL: NSURL, prettyPrintJSON: Bool = false, username: String, password: String) {
+    public init(managedObjectContextConcurrencyType: NSManagedObjectContextConcurrencyType, serverURL: NSURL, prettyPrintJSON: Bool = false, username: String, password: String) {
         
         self.username = username
         self.password = password
