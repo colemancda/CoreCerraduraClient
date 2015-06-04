@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E062E411B20A205004DBAB7 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E062E401B20A205004DBAB7 /* Store.swift */; };
+		6E062E451B20A224004DBAB7 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E062E441B20A224004DBAB7 /* Error.swift */; };
 		6EFD2CA91B18CAF500DFDFF2 /* CoreCerraduraClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EFD2CA81B18CAF500DFDFF2 /* CoreCerraduraClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6EFD2CAF1B18CAF500DFDFF2 /* CoreCerraduraClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EFD2CA31B18CAF500DFDFF2 /* CoreCerraduraClient.framework */; };
 		6EFD2CB61B18CAF500DFDFF2 /* CoreCerraduraClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFD2CB51B18CAF500DFDFF2 /* CoreCerraduraClientTests.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E062E401B20A205004DBAB7 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		6E062E441B20A224004DBAB7 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		6EFD2CA31B18CAF500DFDFF2 /* CoreCerraduraClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreCerraduraClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EFD2CA71B18CAF500DFDFF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EFD2CA81B18CAF500DFDFF2 /* CoreCerraduraClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreCerraduraClient.h; sourceTree = "<group>"; };
@@ -90,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				6EFD2CA81B18CAF500DFDFF2 /* CoreCerraduraClient.h */,
+				6E062E401B20A205004DBAB7 /* Store.swift */,
+				6E062E441B20A224004DBAB7 /* Error.swift */,
 				6EFD2CA61B18CAF500DFDFF2 /* Supporting Files */,
 			);
 			path = CoreCerraduraClient;
@@ -267,6 +273,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E062E451B20A224004DBAB7 /* Error.swift in Sources */,
+				6E062E411B20A205004DBAB7 /* Store.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +392,7 @@
 		6EFD2CBA1B18CAF500DFDFF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -395,12 +404,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		6EFD2CBB1B18CAF500DFDFF2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
