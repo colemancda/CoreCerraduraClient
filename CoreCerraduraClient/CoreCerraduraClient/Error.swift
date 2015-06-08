@@ -8,5 +8,5 @@
 
 import Foundation
 
-/** The reverse DNS error domain string for CorePedidoClient. */
+/** The reverse DNS error domain string for CoreCerraduraClient. */
 public let CoreCerraduraClientErrorDomain = "com.colemancda.CoreCerraduraClient.ErrorDomain"

@@ -74,6 +74,24 @@ final public class Store: NetworkObjects.Store {
         return self.appendAuthorizationHeaderToRequest(request: self.requestForPerformFunction(functionName, entityName: entityName, resourceID: resourceID, JSONObject: JSONObject))
     }
     
+    // MARK: - Requests
+    
+    public override func performSearch(fetchRequest: NSFetchRequest, URLSession: NSURLSession, completionBlock: ((error: NSError?, results: [NSManagedObject]?) -> Void)) -> NSURLSessionDataTask {
+        
+        return super.performSearch(fetchRequest, URLSession: URLSession, completionBlock: { (error: NSError?, results: [NSManagedObject]?) -> Void in
+            
+            // send notification for unauthorized error
+            if error?.code == ServerStatusCode.Unauthorized.rawValue {
+                
+                NSNotificationCenter.defaultCenter().postNotificationName(<#aName: String#>, object: <#AnyObject?#>, userInfo: <#[NSObject : AnyObject]?#>)
+            }
+            
+            // forward
+            
+            completionBlock(error: error, results: results)
+        })
+    }
+    
     // MARK: - Private Methods
     
     private func appendAuthorizationHeaderToRequest(request originalRequest: NSURLRequest) -> NSURLRequest {
@@ -90,4 +108,9 @@ final public class Store: NetworkObjects.Store {
         
         return request
     }
+}
+
+public enum StoreNotification: String {
+    
+    case UnauthorizedError
 }
