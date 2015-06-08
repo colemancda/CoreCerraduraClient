@@ -76,19 +76,93 @@ final public class Store: NetworkObjects.Store {
     
     // MARK: - Requests
     
-    public override func performSearch(fetchRequest: NSFetchRequest, URLSession: NSURLSession, completionBlock: ((error: NSError?, results: [NSManagedObject]?) -> Void)) -> NSURLSessionDataTask {
+    public override func performSearch(fetchRequest: NSFetchRequest, URLSession: NSURLSession = NSURLSession.sharedSession(), completionBlock: ((error: NSError?, results: [NSManagedObject]?) -> Void)) -> NSURLSessionDataTask {
         
         return super.performSearch(fetchRequest, URLSession: URLSession, completionBlock: { (error: NSError?, results: [NSManagedObject]?) -> Void in
             
             // send notification for unauthorized error
             if error?.code == ServerStatusCode.Unauthorized.rawValue {
                 
-                NSNotificationCenter.defaultCenter().postNotificationName(<#aName: String#>, object: <#AnyObject?#>, userInfo: <#[NSObject : AnyObject]?#>)
+                NSNotificationCenter.defaultCenter().postNotificationName(StoreNotification.AuthenticationDidFail.rawValue, object: self, userInfo: nil)
             }
             
             // forward
-            
             completionBlock(error: error, results: results)
+        })
+    }
+    
+    public override func performFunction(function functionName: String, forManagedObject managedObject: NSManagedObject, withJSONObject JSONObject: [String : AnyObject]?, URLSession: NSURLSession = NSURLSession.sharedSession(), completionBlock: ((error: NSError?, functionCode: ServerFunctionCode?, JSONResponse: [String : AnyObject]?) -> Void)) -> NSURLSessionDataTask {
+        
+        return super.performFunction(function: functionName, forManagedObject: managedObject, withJSONObject: JSONObject, URLSession: URLSession, completionBlock: { (error, functionCode, JSONResponse) -> Void in
+            
+            // send notification for unauthorized error
+            if error?.code == ServerStatusCode.Unauthorized.rawValue {
+                
+                NSNotificationCenter.defaultCenter().postNotificationName(StoreNotification.AuthenticationDidFail.rawValue, object: self, userInfo: nil)
+            }
+            
+            // forward
+            completionBlock(error: error, functionCode: functionCode, JSONResponse: JSONResponse)
+        })
+    }
+    
+    public override func fetchEntity(name: String, resourceID: UInt, URLSession: NSURLSession = NSURLSession.sharedSession(), completionBlock: ((error: NSError?, managedObject: NSManagedObject?) -> Void)) -> NSURLSessionDataTask {
+        
+        return super.fetchEntity(name, resourceID: resourceID, URLSession: URLSession, completionBlock: { (error, managedObject) -> Void in
+            
+            // send notification for unauthorized error
+            if error?.code == ServerStatusCode.Unauthorized.rawValue {
+                
+                NSNotificationCenter.defaultCenter().postNotificationName(StoreNotification.AuthenticationDidFail.rawValue, object: self, userInfo: nil)
+            }
+            
+            // forward
+            completionBlock(error: error, managedObject: managedObject)
+        })
+    }
+    
+    public override func editManagedObject(managedObject: NSManagedObject, changes: [String : AnyObject], URLSession: NSURLSession = NSURLSession.sharedSession(), completionBlock: ((error: NSError?) -> Void)) -> NSURLSessionDataTask {
+        
+        return super.editManagedObject(managedObject, changes: changes, URLSession: URLSession, completionBlock: { (error) -> Void in
+            
+            // send notification for unauthorized error
+            if error?.code == ServerStatusCode.Unauthorized.rawValue {
+                
+                NSNotificationCenter.defaultCenter().postNotificationName(StoreNotification.AuthenticationDidFail.rawValue, object: self, userInfo: nil)
+            }
+            
+            // forward
+            completionBlock(error: error)
+        })
+    }
+    
+    public override func deleteManagedObject(managedObject: NSManagedObject, URLSession: NSURLSession = NSURLSession.sharedSession(), completionBlock: ((error: NSError?) -> Void)) -> NSURLSessionDataTask {
+        
+        return super.deleteManagedObject(managedObject, URLSession: URLSession, completionBlock: { (error) -> Void in
+            
+            // send notification for unauthorized error
+            if error?.code == ServerStatusCode.Unauthorized.rawValue {
+                
+                NSNotificationCenter.defaultCenter().postNotificationName(StoreNotification.AuthenticationDidFail.rawValue, object: self, userInfo: nil)
+            }
+            
+            // forward
+            completionBlock(error: error)
+        })
+    }
+    
+    public override func createEntity(name: String, withInitialValues initialValues: [String : AnyObject]?, URLSession: NSURLSession = NSURLSession.sharedSession(), completionBlock: ((error: NSError?, managedObject: NSManagedObject?) -> Void)) -> NSURLSessionDataTask {
+        
+        return super.createEntity(name, withInitialValues: initialValues, URLSession: URLSession, completionBlock: { (error, managedObject) -> Void in
+            
+            // send notification for unauthorized error
+            if error?.code == ServerStatusCode.Unauthorized.rawValue {
+                
+                NSNotificationCenter.defaultCenter().postNotificationName(StoreNotification.AuthenticationDidFail.rawValue, object: self, userInfo: nil)
+            }
+            
+            // forward
+            completionBlock(error: error, managedObject: managedObject)
         })
     }
     
@@ -112,5 +186,5 @@ final public class Store: NetworkObjects.Store {
 
 public enum StoreNotification: String {
     
-    case UnauthorizedError
+    case AuthenticationDidFail = "CoreCerraduraClient.StoreNotification.AuthenticationDidFail"
 }
