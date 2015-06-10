@@ -180,6 +180,8 @@ final public class Store: NetworkObjects.Store {
         
         request.setValue(token, forHTTPHeaderField: "Authorization")
         
+        request.setValue(dateString, forHTTPHeaderField: "Date")
+        
         return request
     }
 }
