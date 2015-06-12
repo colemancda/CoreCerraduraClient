@@ -4,14 +4,24 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>CoreCerraduraClient.xcscheme_^#shared#^_</key>
+		<key>CoreCerraduraClient OS X.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>15</integer>
+			<integer>0</integer>
+		</dict>
+		<key>CoreCerraduraClient iOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>6E093AB71B2B543B00DB7C76</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6EFD2CA21B18CAF500DFDFF2</key>
 		<dict>
 			<key>primary</key>
