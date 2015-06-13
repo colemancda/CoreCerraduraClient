@@ -76,7 +76,7 @@ final public class Store: NetworkObjects.Store {
     
     // MARK: - Requests
     
-    public override func performSearch(fetchRequest: NSFetchRequest, URLSession: NSURLSession = NSURLSession.sharedSession(), completionBlock: ((error: NSError?, results: [NSManagedObject]?) -> Void)) -> NSURLSessionDataTask {
+    public override func performSearch(fetchRequest: NSFetchRequest, URLSession: NSURLSession? = nil, completionBlock: ((error: NSError?, results: [NSManagedObject]?) -> Void)) -> NSURLSessionDataTask {
         
         return super.performSearch(fetchRequest, URLSession: URLSession, completionBlock: { (error: NSError?, results: [NSManagedObject]?) -> Void in
             
@@ -91,7 +91,7 @@ final public class Store: NetworkObjects.Store {
         })
     }
     
-    public override func performFunction(function functionName: String, forManagedObject managedObject: NSManagedObject, withJSONObject JSONObject: [String : AnyObject]?, URLSession: NSURLSession = NSURLSession.sharedSession(), completionBlock: ((error: NSError?, functionCode: ServerFunctionCode?, JSONResponse: [String : AnyObject]?) -> Void)) -> NSURLSessionDataTask {
+    public override func performFunction(function functionName: String, forManagedObject managedObject: NSManagedObject, withJSONObject JSONObject: [String : AnyObject]?, URLSession: NSURLSession? = nil, completionBlock: ((error: NSError?, functionCode: ServerFunctionCode?, JSONResponse: [String : AnyObject]?) -> Void)) -> NSURLSessionDataTask {
         
         return super.performFunction(function: functionName, forManagedObject: managedObject, withJSONObject: JSONObject, URLSession: URLSession, completionBlock: { (error, functionCode, JSONResponse) -> Void in
             
@@ -106,7 +106,7 @@ final public class Store: NetworkObjects.Store {
         })
     }
     
-    public override func fetchEntity(name: String, resourceID: UInt, URLSession: NSURLSession = NSURLSession.sharedSession(), completionBlock: ((error: NSError?, managedObject: NSManagedObject?) -> Void)) -> NSURLSessionDataTask {
+    public override func fetchEntity(name: String, resourceID: UInt, URLSession: NSURLSession? = nil, completionBlock: ((error: NSError?, managedObject: NSManagedObject?) -> Void)) -> NSURLSessionDataTask {
         
         return super.fetchEntity(name, resourceID: resourceID, URLSession: URLSession, completionBlock: { (error, managedObject) -> Void in
             
@@ -121,7 +121,7 @@ final public class Store: NetworkObjects.Store {
         })
     }
     
-    public override func editManagedObject(managedObject: NSManagedObject, changes: [String : AnyObject], URLSession: NSURLSession = NSURLSession.sharedSession(), completionBlock: ((error: NSError?) -> Void)) -> NSURLSessionDataTask {
+    public override func editManagedObject(managedObject: NSManagedObject, changes: [String : AnyObject], URLSession: NSURLSession? = nil, completionBlock: ((error: NSError?) -> Void)) -> NSURLSessionDataTask {
         
         return super.editManagedObject(managedObject, changes: changes, URLSession: URLSession, completionBlock: { (error) -> Void in
             
@@ -136,7 +136,7 @@ final public class Store: NetworkObjects.Store {
         })
     }
     
-    public override func deleteManagedObject(managedObject: NSManagedObject, URLSession: NSURLSession = NSURLSession.sharedSession(), completionBlock: ((error: NSError?) -> Void)) -> NSURLSessionDataTask {
+    public override func deleteManagedObject(managedObject: NSManagedObject, URLSession: NSURLSession? = nil, completionBlock: ((error: NSError?) -> Void)) -> NSURLSessionDataTask {
         
         return super.deleteManagedObject(managedObject, URLSession: URLSession, completionBlock: { (error) -> Void in
             
@@ -151,7 +151,7 @@ final public class Store: NetworkObjects.Store {
         })
     }
     
-    public override func createEntity(name: String, withInitialValues initialValues: [String : AnyObject]?, URLSession: NSURLSession = NSURLSession.sharedSession(), completionBlock: ((error: NSError?, managedObject: NSManagedObject?) -> Void)) -> NSURLSessionDataTask {
+    public override func createEntity(name: String, withInitialValues initialValues: [String : AnyObject]?, URLSession: NSURLSession? = nil, completionBlock: ((error: NSError?, managedObject: NSManagedObject?) -> Void)) -> NSURLSessionDataTask {
         
         return super.createEntity(name, withInitialValues: initialValues, URLSession: URLSession, completionBlock: { (error, managedObject) -> Void in
             
