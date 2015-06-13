@@ -71,7 +71,7 @@ final public class Store: NetworkObjects.Store {
     
     public override func requestForPerformFunction(functionName: String, entityName: String, resourceID: UInt, JSONObject: [String : AnyObject]?) -> NSURLRequest {
         
-        return self.appendAuthorizationHeaderToRequest(request: self.requestForPerformFunction(functionName, entityName: entityName, resourceID: resourceID, JSONObject: JSONObject))
+        return self.appendAuthorizationHeaderToRequest(request: super.requestForPerformFunction(functionName, entityName: entityName, resourceID: resourceID, JSONObject: JSONObject))
     }
     
     // MARK: - Requests
